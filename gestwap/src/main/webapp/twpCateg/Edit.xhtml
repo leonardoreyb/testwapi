@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TwpCategEditDlg" widgetVar="TwpCategEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditTwpCategTitle}">
+            <h:form id="TwpCategEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{twpCategController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditTwpCategLabel_tcatId}" for="tcatId" />
+                        <p:inputText id="tcatId" value="#{twpCategController.selected.tcatId}" title="#{bundle.EditTwpCategTitle_tcatId}" required="true" requiredMessage="#{bundle.EditTwpCategRequiredMessage_tcatId}"/>
+                        <p:outputLabel value="#{bundle.EditTwpCategLabel_tcatCod}" for="tcatCod" />
+                        <p:inputText id="tcatCod" value="#{twpCategController.selected.tcatCod}" title="#{bundle.EditTwpCategTitle_tcatCod}" />
+                        <p:outputLabel value="#{bundle.EditTwpCategLabel_tcatDet}" for="tcatDet" />
+                        <p:inputText id="tcatDet" value="#{twpCategController.selected.tcatDet}" title="#{bundle.EditTwpCategTitle_tcatDet}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{twpCategController.update}" value="#{bundle.Save}" update="display,:TwpCategListForm:datalist,:growl" oncomplete="handleSubmit(args, 'TwpCategEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TwpCategEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

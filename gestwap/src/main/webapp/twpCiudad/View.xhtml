@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TwpCiudadViewDlg" widgetVar="TwpCiudadViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewTwpCiudadTitle}">
+            <h:form id="TwpCiudadViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{twpCiudadController.selected != null}">
+                        <h:outputText value="#{bundle.ViewTwpCiudadLabel_tciudId}"/>
+                        <h:outputText value="#{twpCiudadController.selected.tciudId}" title="#{bundle.ViewTwpCiudadTitle_tciudId}"/>
+                        <h:outputText value="#{bundle.ViewTwpCiudadLabel_tciudCod}"/>
+                        <h:outputText value="#{twpCiudadController.selected.tciudCod}" title="#{bundle.ViewTwpCiudadTitle_tciudCod}"/>
+                        <h:outputText value="#{bundle.ViewTwpCiudadLabel_tciudNombre}"/>
+                        <h:outputText value="#{twpCiudadController.selected.tciudNombre}" title="#{bundle.ViewTwpCiudadTitle_tciudNombre}"/>
+                        <h:outputText value="#{bundle.ViewTwpCiudadLabel_tdeptoId}"/>
+                        <h:outputText value="#{twpCiudadController.selected.tdeptoId}" title="#{bundle.ViewTwpCiudadTitle_tdeptoId}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="TwpCiudadViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

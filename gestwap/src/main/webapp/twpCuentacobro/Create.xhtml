@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TwpCuentacobroCreateDlg" widgetVar="TwpCuentacobroCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateTwpCuentacobroTitle}">
+            <h:form id="TwpCuentacobroCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{twpCuentacobroController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateTwpCuentacobroLabel_tcuecoCod}" for="tcuecoCod" />
+                        <p:inputText id="tcuecoCod" value="#{twpCuentacobroController.selected.tcuecoCod}" title="#{bundle.CreateTwpCuentacobroTitle_tcuecoCod}" required="true" requiredMessage="#{bundle.CreateTwpCuentacobroRequiredMessage_tcuecoCod}"/>
+                        <p:outputLabel value="#{bundle.CreateTwpCuentacobroLabel_tcuecoValor}" for="tcuecoValor" />
+                        <p:inputText id="tcuecoValor" value="#{twpCuentacobroController.selected.tcuecoValor}" title="#{bundle.CreateTwpCuentacobroTitle_tcuecoValor}" />
+                        <p:outputLabel value="#{bundle.CreateTwpCuentacobroLabel_tcuecoCorte}" for="tcuecoCorte" />
+                        <p:inputText id="tcuecoCorte" value="#{twpCuentacobroController.selected.tcuecoCorte}" title="#{bundle.CreateTwpCuentacobroTitle_tcuecoCorte}" />
+                        <p:outputLabel value="#{bundle.CreateTwpCuentacobroLabel_tcuecoFecha}" for="tcuecoFecha" />
+                        <p:calendar id="tcuecoFecha" pattern="MM/dd/yyyy" value="#{twpCuentacobroController.selected.tcuecoFecha}" title="#{bundle.EditTwpCuentacobroTitle_tcuecoFecha}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateTwpCuentacobroLabel_twpProyTproyId}" for="twpProyTproyId" />
+                        <p:selectOneMenu id="twpProyTproyId" value="#{twpCuentacobroController.selected.twpProyTproyId}" required="true" requiredMessage="#{bundle.EditTwpCuentacobroRequiredMessage_twpProyTproyId}">
+                            <f:selectItems value="#{twpProyController.itemsAvailableSelectOne}"
+                                           var="twpProyTproyIdItem"
+                                           itemValue="#{twpProyTproyIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{twpCuentacobroController.create}" value="#{bundle.Save}" update="display,:TwpCuentacobroListForm:datalist,:growl" oncomplete="handleSubmit(args,'TwpCuentacobroCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TwpCuentacobroCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TwpFacturaEditDlg" widgetVar="TwpFacturaEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditTwpFacturaTitle}">
+            <h:form id="TwpFacturaEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{twpFacturaController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditTwpFacturaLabel_tfactId}" for="tfactId" />
+                        <p:inputText id="tfactId" value="#{twpFacturaController.selected.tfactId}" title="#{bundle.EditTwpFacturaTitle_tfactId}" required="true" requiredMessage="#{bundle.EditTwpFacturaRequiredMessage_tfactId}"/>
+                        <p:outputLabel value="#{bundle.EditTwpFacturaLabel_tfactCod}" for="tfactCod" />
+                        <p:inputText id="tfactCod" value="#{twpFacturaController.selected.tfactCod}" title="#{bundle.EditTwpFacturaTitle_tfactCod}" />
+                        <p:outputLabel value="#{bundle.EditTwpFacturaLabel_tfactFech}" for="tfactFech" />
+                        <p:inputText id="tfactFech" value="#{twpFacturaController.selected.tfactFech}" title="#{bundle.EditTwpFacturaTitle_tfactFech}" />
+                        <p:outputLabel value="#{bundle.EditTwpFacturaLabel_tfactSubt}" for="tfactSubt" />
+                        <p:inputText id="tfactSubt" value="#{twpFacturaController.selected.tfactSubt}" title="#{bundle.EditTwpFacturaTitle_tfactSubt}" />
+                        <p:outputLabel value="#{bundle.EditTwpFacturaLabel_tfactTot}" for="tfactTot" />
+                        <p:inputText id="tfactTot" value="#{twpFacturaController.selected.tfactTot}" title="#{bundle.EditTwpFacturaTitle_tfactTot}" />
+                        <p:outputLabel value="#{bundle.EditTwpFacturaLabel_twpClienteTclieId}" for="twpClienteTclieId" />
+                        <p:selectOneMenu id="twpClienteTclieId" value="#{twpFacturaController.selected.twpClienteTclieId}" required="true" requiredMessage="#{bundle.EditTwpFacturaRequiredMessage_twpClienteTclieId}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{twpClienteController.itemsAvailableSelectOne}"
+                                           var="twpClienteTclieIdItem"
+                                           itemValue="#{twpClienteTclieIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditTwpFacturaLabel_twpProyTproyId}" for="twpProyTproyId" />
+                        <p:selectOneMenu id="twpProyTproyId" value="#{twpFacturaController.selected.twpProyTproyId}" required="true" requiredMessage="#{bundle.EditTwpFacturaRequiredMessage_twpProyTproyId}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{twpProyController.itemsAvailableSelectOne}"
+                                           var="twpProyTproyIdItem"
+                                           itemValue="#{twpProyTproyIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{twpFacturaController.update}" value="#{bundle.Save}" update="display,:TwpFacturaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'TwpFacturaEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TwpFacturaEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

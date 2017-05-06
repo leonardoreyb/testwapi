@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TwpProyEditDlg" widgetVar="TwpProyEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditTwpProyTitle}">
+            <h:form id="TwpProyEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{twpProyController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditTwpProyLabel_tproyId}" for="tproyId" />
+                        <p:inputText id="tproyId" value="#{twpProyController.selected.tproyId}" title="#{bundle.EditTwpProyTitle_tproyId}" required="true" requiredMessage="#{bundle.EditTwpProyRequiredMessage_tproyId}"/>
+                        <p:outputLabel value="#{bundle.EditTwpProyLabel_tproyCod}" for="tproyCod" />
+                        <p:inputText id="tproyCod" value="#{twpProyController.selected.tproyCod}" title="#{bundle.EditTwpProyTitle_tproyCod}" />
+                        <p:outputLabel value="#{bundle.EditTwpProyLabel_tproyNom}" for="tproyNom" />
+                        <p:inputText id="tproyNom" value="#{twpProyController.selected.tproyNom}" title="#{bundle.EditTwpProyTitle_tproyNom}" />
+                        <p:outputLabel value="#{bundle.EditTwpProyLabel_tproySociedad}" for="tproySociedad" />
+                        <p:selectBooleanCheckbox id="tproySociedad" value="#{twpProyController.selected.tproySociedad}" />
+                        <p:outputLabel value="#{bundle.EditTwpProyLabel_tproyA}" for="tproyA" />
+                        <p:inputText id="tproyA" value="#{twpProyController.selected.tproyA}" title="#{bundle.EditTwpProyTitle_tproyA}" />
+                        <p:outputLabel value="#{bundle.EditTwpProyLabel_tproyI}" for="tproyI" />
+                        <p:inputText id="tproyI" value="#{twpProyController.selected.tproyI}" title="#{bundle.EditTwpProyTitle_tproyI}" />
+                        <p:outputLabel value="#{bundle.EditTwpProyLabel_tproyU}" for="tproyU" />
+                        <p:inputText id="tproyU" value="#{twpProyController.selected.tproyU}" title="#{bundle.EditTwpProyTitle_tproyU}" />
+                        <p:outputLabel value="#{bundle.EditTwpProyLabel_tproyEsta}" for="tproyEsta" />
+                        <p:inputText id="tproyEsta" value="#{twpProyController.selected.tproyEsta}" title="#{bundle.EditTwpProyTitle_tproyEsta}" />
+                        <p:outputLabel value="#{bundle.EditTwpProyLabel_twpAnticipoTcipoId}" for="twpAnticipoTcipoId" />
+                        <p:selectOneMenu id="twpAnticipoTcipoId" value="#{twpProyController.selected.twpAnticipoTcipoId}" required="true" requiredMessage="#{bundle.EditTwpProyRequiredMessage_twpAnticipoTcipoId}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{twpAnticipoController.itemsAvailableSelectOne}"
+                                           var="twpAnticipoTcipoIdItem"
+                                           itemValue="#{twpAnticipoTcipoIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditTwpProyLabel_twpCentrocostTcentcId}" for="twpCentrocostTcentcId" />
+                        <p:selectOneMenu id="twpCentrocostTcentcId" value="#{twpProyController.selected.twpCentrocostTcentcId}" required="true" requiredMessage="#{bundle.EditTwpProyRequiredMessage_twpCentrocostTcentcId}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{twpCentrocostController.itemsAvailableSelectOne}"
+                                           var="twpCentrocostTcentcIdItem"
+                                           itemValue="#{twpCentrocostTcentcIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditTwpProyLabel_twpCiudadTciudId}" for="twpCiudadTciudId" />
+                        <p:selectOneMenu id="twpCiudadTciudId" value="#{twpProyController.selected.twpCiudadTciudId}" required="true" requiredMessage="#{bundle.EditTwpProyRequiredMessage_twpCiudadTciudId}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{twpCiudadController.itemsAvailableSelectOne}"
+                                           var="twpCiudadTciudIdItem"
+                                           itemValue="#{twpCiudadTciudIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditTwpProyLabel_twpIvaTivaId}" for="twpIvaTivaId" />
+                        <p:selectOneMenu id="twpIvaTivaId" value="#{twpProyController.selected.twpIvaTivaId}" required="true" requiredMessage="#{bundle.EditTwpProyRequiredMessage_twpIvaTivaId}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{twpIvaController.itemsAvailableSelectOne}"
+                                           var="twpIvaTivaIdItem"
+                                           itemValue="#{twpIvaTivaIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditTwpProyLabel_twpSociedadTsocId}" for="twpSociedadTsocId" />
+                        <p:selectOneMenu id="twpSociedadTsocId" value="#{twpProyController.selected.twpSociedadTsocId}" required="true" requiredMessage="#{bundle.EditTwpProyRequiredMessage_twpSociedadTsocId}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{twpSociedadController.itemsAvailableSelectOne}"
+                                           var="twpSociedadTsocIdItem"
+                                           itemValue="#{twpSociedadTsocIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{twpProyController.update}" value="#{bundle.Save}" update="display,:TwpProyListForm:datalist,:growl" oncomplete="handleSubmit(args, 'TwpProyEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TwpProyEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

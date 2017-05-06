@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TwProductoEditDlg" widgetVar="TwProductoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditTwProductoTitle}">
+            <h:form id="TwProductoEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{twProductoController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditTwProductoLabel_tprodId}" for="tprodId" />
+                        <p:inputText id="tprodId" value="#{twProductoController.selected.tprodId}" title="#{bundle.EditTwProductoTitle_tprodId}" required="true" requiredMessage="#{bundle.EditTwProductoRequiredMessage_tprodId}"/>
+                        <p:outputLabel value="#{bundle.EditTwProductoLabel_tprodCod}" for="tprodCod" />
+                        <p:inputText id="tprodCod" value="#{twProductoController.selected.tprodCod}" title="#{bundle.EditTwProductoTitle_tprodCod}" />
+                        <p:outputLabel value="#{bundle.EditTwProductoLabel_tprodDetalle}" for="tprodDetalle" />
+                        <p:inputText id="tprodDetalle" value="#{twProductoController.selected.tprodDetalle}" title="#{bundle.EditTwProductoTitle_tprodDetalle}" />
+                        <p:outputLabel value="#{bundle.EditTwProductoLabel_twpCategTcatId}" for="twpCategTcatId" />
+                        <p:selectOneMenu id="twpCategTcatId" value="#{twProductoController.selected.twpCategTcatId}" required="true" requiredMessage="#{bundle.EditTwProductoRequiredMessage_twpCategTcatId}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{twpCategController.itemsAvailableSelectOne}"
+                                           var="twpCategTcatIdItem"
+                                           itemValue="#{twpCategTcatIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{twProductoController.update}" value="#{bundle.Save}" update="display,:TwProductoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'TwProductoEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TwProductoEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

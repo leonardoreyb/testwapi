@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TwpSociedadEditDlg" widgetVar="TwpSociedadEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditTwpSociedadTitle}">
+            <h:form id="TwpSociedadEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{twpSociedadController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditTwpSociedadLabel_tsocId}" for="tsocId" />
+                        <p:inputText id="tsocId" value="#{twpSociedadController.selected.tsocId}" title="#{bundle.EditTwpSociedadTitle_tsocId}" required="true" requiredMessage="#{bundle.EditTwpSociedadRequiredMessage_tsocId}"/>
+                        <p:outputLabel value="#{bundle.EditTwpSociedadLabel_tsocCod}" for="tsocCod" />
+                        <p:inputText id="tsocCod" value="#{twpSociedadController.selected.tsocCod}" title="#{bundle.EditTwpSociedadTitle_tsocCod}" />
+                        <p:outputLabel value="#{bundle.EditTwpSociedadLabel_tsocNom}" for="tsocNom" />
+                        <p:inputText id="tsocNom" value="#{twpSociedadController.selected.tsocNom}" title="#{bundle.EditTwpSociedadTitle_tsocNom}" />
+                        <p:outputLabel value="#{bundle.EditTwpSociedadLabel_tsocNueva}" for="tsocNueva" />
+                        <p:selectBooleanCheckbox id="tsocNueva" value="#{twpSociedadController.selected.tsocNueva}" />
+                        <p:outputLabel value="#{bundle.EditTwpSociedadLabel_tsocAdmfina}" for="tsocAdmfina" />
+                        <p:inputText id="tsocAdmfina" value="#{twpSociedadController.selected.tsocAdmfina}" title="#{bundle.EditTwpSociedadTitle_tsocAdmfina}" />
+                        <p:outputLabel value="#{bundle.EditTwpSociedadLabel_twpSocioTsociId}" for="twpSocioTsociId" />
+                        <p:selectOneMenu id="twpSocioTsociId" value="#{twpSociedadController.selected.twpSocioTsociId}" required="true" requiredMessage="#{bundle.EditTwpSociedadRequiredMessage_twpSocioTsociId}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{twpSocioController.itemsAvailableSelectOne}"
+                                           var="twpSocioTsociIdItem"
+                                           itemValue="#{twpSocioTsociIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{twpSociedadController.update}" value="#{bundle.Save}" update="display,:TwpSociedadListForm:datalist,:growl" oncomplete="handleSubmit(args, 'TwpSociedadEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TwpSociedadEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

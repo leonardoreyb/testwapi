@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TwpCostosCreateDlg" widgetVar="TwpCostosCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateTwpCostosTitle}">
+            <h:form id="TwpCostosCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{twpCostosController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateTwpCostosLabel_tcostId}" for="tcostId" />
+                        <p:inputText id="tcostId" value="#{twpCostosController.selected.tcostId}" title="#{bundle.CreateTwpCostosTitle_tcostId}" required="true" requiredMessage="#{bundle.CreateTwpCostosRequiredMessage_tcostId}"/>
+                        <p:outputLabel value="#{bundle.CreateTwpCostosLabel_tcostDetalle}" for="tcostDetalle" />
+                        <p:inputText id="tcostDetalle" value="#{twpCostosController.selected.tcostDetalle}" title="#{bundle.CreateTwpCostosTitle_tcostDetalle}" />
+                        <p:outputLabel value="#{bundle.CreateTwpCostosLabel_tcostValor}" for="tcostValor" />
+                        <p:inputText id="tcostValor" value="#{twpCostosController.selected.tcostValor}" title="#{bundle.CreateTwpCostosTitle_tcostValor}" />
+                        <p:outputLabel value="#{bundle.CreateTwpCostosLabel_tcostCant}" for="tcostCant" />
+                        <p:inputText id="tcostCant" value="#{twpCostosController.selected.tcostCant}" title="#{bundle.CreateTwpCostosTitle_tcostCant}" />
+                        <p:outputLabel value="#{bundle.CreateTwpCostosLabel_twpCentrocostTcentcId}" for="twpCentrocostTcentcId" />
+                        <p:selectOneMenu id="twpCentrocostTcentcId" value="#{twpCostosController.selected.twpCentrocostTcentcId}" required="true" requiredMessage="#{bundle.EditTwpCostosRequiredMessage_twpCentrocostTcentcId}">
+                            <f:selectItems value="#{twpCentrocostController.itemsAvailableSelectOne}"
+                                           var="twpCentrocostTcentcIdItem"
+                                           itemValue="#{twpCentrocostTcentcIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.CreateTwpCostosLabel_twpProveedorTprovId}" for="twpProveedorTprovId" />
+                        <p:selectOneMenu id="twpProveedorTprovId" value="#{twpCostosController.selected.twpProveedorTprovId}" required="true" requiredMessage="#{bundle.EditTwpCostosRequiredMessage_twpProveedorTprovId}">
+                            <f:selectItems value="#{twpProveedorController.itemsAvailableSelectOne}"
+                                           var="twpProveedorTprovIdItem"
+                                           itemValue="#{twpProveedorTprovIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{twpCostosController.create}" value="#{bundle.Save}" update="display,:TwpCostosListForm:datalist,:growl" oncomplete="handleSubmit(args,'TwpCostosCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TwpCostosCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

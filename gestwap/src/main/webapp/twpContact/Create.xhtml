@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TwpContactCreateDlg" widgetVar="TwpContactCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="Crear contacto">
+            <h:form id="TwpContactCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{twpContactController.selected != null}">
+                        
+                        <p:outputLabel value="Nombre :" for="tcontNombre" />
+                        <p:inputText id="tcontNombre" value="#{twpContactController.selected.tcontNombre}" title="#{bundle.CreateTwpContactTitle_tcontNombre}" />
+                        <p:outputLabel value="Cargo :" for="tcontCargo" />
+                        <p:inputText id="tcontCargo" value="#{twpContactController.selected.tcontCargo}" title="#{bundle.CreateTwpContactTitle_tcontCargo}" />
+                        <p:outputLabel value="Mail :" for="tcontMail" />
+                        <p:inputText id="tcontMail" type="email" value="#{twpContactController.selected.tcontMail}" title="#{bundle.CreateTwpContactTitle_tcontMail}"/>
+                        <p:outputLabel value="Telefono :" for="tcontTel" />
+                        <p:inputText id="tcontTel" value="#{twpContactController.selected.tcontTel}" title="#{bundle.CreateTwpContactTitle_tcontTel}" />
+                        <!--<p:outputLabel value="Sociedad :" for="twpSocioTsocId" />-->
+                       </p:panelGrid>
+                    <p:commandButton actionListener="#{twpContactController.create}" value="#{bundle.Save}" update="display,:TwpContactListForm:datalist,:growl" oncomplete="handleSubmit(args,'TwpContactCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TwpContactCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

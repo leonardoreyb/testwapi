@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TwpProyViewDlg" widgetVar="TwpProyViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewTwpProyTitle}">
+            <h:form id="TwpProyViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{twpProyController.selected != null}">
+                        <h:outputText value="#{bundle.ViewTwpProyLabel_tproyId}"/>
+                        <h:outputText value="#{twpProyController.selected.tproyId}" title="#{bundle.ViewTwpProyTitle_tproyId}"/>
+                        <h:outputText value="#{bundle.ViewTwpProyLabel_tproyCod}"/>
+                        <h:outputText value="#{twpProyController.selected.tproyCod}" title="#{bundle.ViewTwpProyTitle_tproyCod}"/>
+                        <h:outputText value="#{bundle.ViewTwpProyLabel_tproyNom}"/>
+                        <h:outputText value="#{twpProyController.selected.tproyNom}" title="#{bundle.ViewTwpProyTitle_tproyNom}"/>
+                        <h:outputText value="#{bundle.ViewTwpProyLabel_tproySociedad}"/>
+                        <p:selectBooleanCheckbox value="#{twpProyController.selected.tproySociedad}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewTwpProyLabel_tproyA}"/>
+                        <h:outputText value="#{twpProyController.selected.tproyA}" title="#{bundle.ViewTwpProyTitle_tproyA}"/>
+                        <h:outputText value="#{bundle.ViewTwpProyLabel_tproyI}"/>
+                        <h:outputText value="#{twpProyController.selected.tproyI}" title="#{bundle.ViewTwpProyTitle_tproyI}"/>
+                        <h:outputText value="#{bundle.ViewTwpProyLabel_tproyU}"/>
+                        <h:outputText value="#{twpProyController.selected.tproyU}" title="#{bundle.ViewTwpProyTitle_tproyU}"/>
+                        <h:outputText value="#{bundle.ViewTwpProyLabel_tproyEsta}"/>
+                        <h:outputText value="#{twpProyController.selected.tproyEsta}" title="#{bundle.ViewTwpProyTitle_tproyEsta}"/>
+                        <h:outputText value="#{bundle.ViewTwpProyLabel_twpAnticipoTcipoId}"/>
+                        <h:outputText value="#{twpProyController.selected.twpAnticipoTcipoId}" title="#{bundle.ViewTwpProyTitle_twpAnticipoTcipoId}"/>
+                        <h:outputText value="#{bundle.ViewTwpProyLabel_twpCentrocostTcentcId}"/>
+                        <h:outputText value="#{twpProyController.selected.twpCentrocostTcentcId}" title="#{bundle.ViewTwpProyTitle_twpCentrocostTcentcId}"/>
+                        <h:outputText value="#{bundle.ViewTwpProyLabel_twpCiudadTciudId}"/>
+                        <h:outputText value="#{twpProyController.selected.twpCiudadTciudId}" title="#{bundle.ViewTwpProyTitle_twpCiudadTciudId}"/>
+                        <h:outputText value="#{bundle.ViewTwpProyLabel_twpIvaTivaId}"/>
+                        <h:outputText value="#{twpProyController.selected.twpIvaTivaId}" title="#{bundle.ViewTwpProyTitle_twpIvaTivaId}"/>
+                        <h:outputText value="#{bundle.ViewTwpProyLabel_twpSociedadTsocId}"/>
+                        <h:outputText value="#{twpProyController.selected.twpSociedadTsocId}" title="#{bundle.ViewTwpProyTitle_twpSociedadTsocId}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="TwpProyViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

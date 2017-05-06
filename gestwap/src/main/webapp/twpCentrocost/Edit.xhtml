@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TwpCentrocostEditDlg" widgetVar="TwpCentrocostEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditTwpCentrocostTitle}">
+            <h:form id="TwpCentrocostEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{twpCentrocostController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditTwpCentrocostLabel_tcentcId}" for="tcentcId" />
+                        <p:inputText id="tcentcId" value="#{twpCentrocostController.selected.tcentcId}" title="#{bundle.EditTwpCentrocostTitle_tcentcId}" required="true" requiredMessage="#{bundle.EditTwpCentrocostRequiredMessage_tcentcId}"/>
+                        <p:outputLabel value="#{bundle.EditTwpCentrocostLabel_tcentcCod}" for="tcentcCod" />
+                        <p:inputText id="tcentcCod" value="#{twpCentrocostController.selected.tcentcCod}" title="#{bundle.EditTwpCentrocostTitle_tcentcCod}" />
+                        <p:outputLabel value="#{bundle.EditTwpCentrocostLabel_tcentcDet}" for="tcentcDet" />
+                        <p:inputText id="tcentcDet" value="#{twpCentrocostController.selected.tcentcDet}" title="#{bundle.EditTwpCentrocostTitle_tcentcDet}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{twpCentrocostController.update}" value="#{bundle.Save}" update="display,:TwpCentrocostListForm:datalist,:growl" oncomplete="handleSubmit(args, 'TwpCentrocostEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TwpCentrocostEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

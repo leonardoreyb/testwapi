@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TwpAnticipoViewDlg" widgetVar="TwpAnticipoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewTwpAnticipoTitle}">
+            <h:form id="TwpAnticipoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{twpAnticipoController.selected != null}">
+                        <h:outputText value="#{bundle.ViewTwpAnticipoLabel_tcipoId}"/>
+                        <h:outputText value="#{twpAnticipoController.selected.tcipoId}" title="#{bundle.ViewTwpAnticipoTitle_tcipoId}"/>
+                        <h:outputText value="#{bundle.ViewTwpAnticipoLabel_tcipoFecha}"/>
+                        <h:outputText value="#{twpAnticipoController.selected.tcipoFecha}" title="#{bundle.ViewTwpAnticipoTitle_tcipoFecha}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewTwpAnticipoLabel_tcipoValor}"/>
+                        <h:outputText value="#{twpAnticipoController.selected.tcipoValor}" title="#{bundle.ViewTwpAnticipoTitle_tcipoValor}"/>
+                        <h:outputText value="#{bundle.ViewTwpAnticipoLabel_tcipoA}"/>
+                        <p:selectBooleanCheckbox value="#{twpAnticipoController.selected.tcipoA}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewTwpAnticipoLabel_tcipoI}"/>
+                        <p:selectBooleanCheckbox value="#{twpAnticipoController.selected.tcipoI}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewTwpAnticipoLabel_tcipoU}"/>
+                        <p:selectBooleanCheckbox value="#{twpAnticipoController.selected.tcipoU}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewTwpAnticipoLabel_tcipoIVA}"/>
+                        <p:selectBooleanCheckbox value="#{twpAnticipoController.selected.tcipoIVA}" disabled="true"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="TwpAnticipoViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

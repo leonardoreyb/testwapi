@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TwpProvhtcontEditDlg" widgetVar="TwpProvhtcontEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditTwpProvhtcontTitle}">
+            <h:form id="TwpProvhtcontEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{twpProvhtcontController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditTwpProvhtcontLabel_twphc}" for="twphc" />
+                        <p:inputText id="twphc" value="#{twpProvhtcontController.selected.twphc}" title="#{bundle.EditTwpProvhtcontTitle_twphc}" required="true" requiredMessage="#{bundle.EditTwpProvhtcontRequiredMessage_twphc}"/>
+                        <p:outputLabel value="#{bundle.EditTwpProvhtcontLabel_twpContid}" for="twpContid" />
+                        <p:selectOneMenu id="twpContid" value="#{twpProvhtcontController.selected.twpContid}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{twpContactController.itemsAvailableSelectOne}"
+                                           var="twpContidItem"
+                                           itemValue="#{twpContidItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditTwpProvhtcontLabel_twpProvid}" for="twpProvid" />
+                        <p:selectOneMenu id="twpProvid" value="#{twpProvhtcontController.selected.twpProvid}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{twpProveedorController.itemsAvailableSelectOne}"
+                                           var="twpProvidItem"
+                                           itemValue="#{twpProvidItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{twpProvhtcontController.update}" value="#{bundle.Save}" update="display,:TwpProvhtcontListForm:datalist,:growl" oncomplete="handleSubmit(args, 'TwpProvhtcontEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TwpProvhtcontEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

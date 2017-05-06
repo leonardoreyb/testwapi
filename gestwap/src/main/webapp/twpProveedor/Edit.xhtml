@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TwpProveedorEditDlg" widgetVar="TwpProveedorEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditTwpProveedorTitle}">
+            <h:form id="TwpProveedorEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{twpProveedorController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditTwpProveedorLabel_tprovId}" for="tprovId" />
+                        <p:inputText id="tprovId" value="#{twpProveedorController.selected.tprovId}" title="#{bundle.EditTwpProveedorTitle_tprovId}" required="true" requiredMessage="#{bundle.EditTwpProveedorRequiredMessage_tprovId}"/>
+                        <p:outputLabel value="#{bundle.EditTwpProveedorLabel_tprovCod}" for="tprovCod" />
+                        <p:inputText id="tprovCod" value="#{twpProveedorController.selected.tprovCod}" title="#{bundle.EditTwpProveedorTitle_tprovCod}" />
+                        <p:outputLabel value="#{bundle.EditTwpProveedorLabel_tprovNom}" for="tprovNom" />
+                        <p:inputText id="tprovNom" value="#{twpProveedorController.selected.tprovNom}" title="#{bundle.EditTwpProveedorTitle_tprovNom}" />
+                        <p:outputLabel value="#{bundle.EditTwpProveedorLabel_tprovDir}" for="tprovDir" />
+                        <p:inputText id="tprovDir" value="#{twpProveedorController.selected.tprovDir}" title="#{bundle.EditTwpProveedorTitle_tprovDir}" />
+                        <p:outputLabel value="#{bundle.EditTwpProveedorLabel_tprovTel}" for="tprovTel" />
+                        <p:inputText id="tprovTel" value="#{twpProveedorController.selected.tprovTel}" title="#{bundle.EditTwpProveedorTitle_tprovTel}" />
+                        <p:outputLabel value="#{bundle.EditTwpProveedorLabel_tprovTipo}" for="tprovTipo" />
+                        <p:inputText id="tprovTipo" value="#{twpProveedorController.selected.tprovTipo}" title="#{bundle.EditTwpProveedorTitle_tprovTipo}" />
+                                <p:outputLabel value="Categoría :" for="categoria" />
+                        <p:autoComplete id="categoria" value="#{twpCategController.selected}" completeMethod="#{twpCategController.completeCategoria}"
+                                                var="category" itemLabel="#{category.tcatDet}" itemValue="#{category}" forceSelection="true" />
+                        <p:outputLabel value="#{bundle.EditTwpProveedorLabel_twpCiudadTciudId}" for="twpCiudadTciudId" />
+                        <p:selectOneMenu id="twpCiudadTciudId" value="#{twpProveedorController.selected.twpCiudadTciudId}" required="true" requiredMessage="#{bundle.EditTwpProveedorRequiredMessage_twpCiudadTciudId}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{twpCiudadController.itemsAvailableSelectOne}"
+                                           var="twpCiudadTciudIdItem"
+                                           itemValue="#{twpCiudadTciudIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditTwpProveedorLabel_twpContactTcontId}" for="twpContactTcontId" />
+                        <p:selectOneMenu id="twpContactTcontId" value="#{twpProveedorController.selected.twpContactTcontId}" required="true" requiredMessage="#{bundle.EditTwpProveedorRequiredMessage_twpContactTcontId}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{twpContactController.itemsAvailableSelectOne}"
+                                           var="twpContactTcontIdItem"
+                                           itemValue="#{twpContactTcontIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditTwpProveedorLabel_twpCuentaTcuenId}" for="twpCuentaTcuenId" />
+                        <p:selectOneMenu id="twpCuentaTcuenId" value="#{twpProveedorController.selected.twpCuentaTcuenId}" required="true" requiredMessage="#{bundle.EditTwpProveedorRequiredMessage_twpCuentaTcuenId}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{twpCuentaController.itemsAvailableSelectOne}"
+                                           var="twpCuentaTcuenIdItem"
+                                           itemValue="#{twpCuentaTcuenIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditTwpProveedorLabel_twpServicioTservId}" for="twpServicioTservId" />
+                        <p:selectOneMenu id="twpServicioTservId" value="#{twpProveedorController.selected.twpServicioTservId}" required="true" requiredMessage="#{bundle.EditTwpProveedorRequiredMessage_twpServicioTservId}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{twpServicioController.itemsAvailableSelectOne}"
+                                           var="twpServicioTservIdItem"
+                                           itemValue="#{twpServicioTservIdItem}"/>
+                        </p:selectOneMenu>
+                        <p:outputLabel value="#{bundle.EditTwpProveedorLabel_twCategoriaTcategId}" for="twCategoriaTcategId" />
+                        <p:selectOneMenu id="twCategoriaTcategId" value="#{twpProveedorController.selected.twCategoriaTcategId}" required="true" requiredMessage="#{bundle.EditTwpProveedorRequiredMessage_twCategoriaTcategId}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{twpCategController.itemsAvailableSelectOne}"
+                                           var="twCategoriaTcategIdItem"
+                                           itemValue="#{twCategoriaTcategIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{twpProveedorController.update}" value="#{bundle.Save}" update="display,:TwpProveedorListForm:datalist,:growl" oncomplete="handleSubmit(args, 'TwpProveedorEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TwpProveedorEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

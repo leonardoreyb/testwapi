@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TwpContactEditDlg" widgetVar="TwpContactEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditTwpContactTitle}">
+            <h:form id="TwpContactEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{twpContactController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditTwpContactLabel_tcontId}" for="tcontId" />
+                        <p:inputText id="tcontId" value="#{twpContactController.selected.tcontId}" title="#{bundle.EditTwpContactTitle_tcontId}" required="true" requiredMessage="#{bundle.EditTwpContactRequiredMessage_tcontId}"/>
+                        <p:outputLabel value="#{bundle.EditTwpContactLabel_tcontNombre}" for="tcontNombre" />
+                        <p:inputText id="tcontNombre" value="#{twpContactController.selected.tcontNombre}" title="#{bundle.EditTwpContactTitle_tcontNombre}" />
+                        <p:outputLabel value="#{bundle.EditTwpContactLabel_tcontCargo}" for="tcontCargo" />
+                        <p:inputText id="tcontCargo" value="#{twpContactController.selected.tcontCargo}" title="#{bundle.EditTwpContactTitle_tcontCargo}" />
+                        <p:outputLabel value="#{bundle.EditTwpContactLabel_tcontMail}" for="tcontMail" />
+                        <p:inputText id="tcontMail" value="#{twpContactController.selected.tcontMail}" title="#{bundle.EditTwpContactTitle_tcontMail}" />
+                        <p:outputLabel value="#{bundle.EditTwpContactLabel_tcontTel}" for="tcontTel" />
+                        <p:inputText id="tcontTel" value="#{twpContactController.selected.tcontTel}" title="#{bundle.EditTwpContactTitle_tcontTel}" />
+                        <p:outputLabel value="#{bundle.EditTwpContactLabel_twpSocioTsocId}" for="twpSocioTsocId" />
+                        <p:selectOneMenu id="twpSocioTsocId" value="#{twpContactController.selected.twpSocioTsocId}" required="true" requiredMessage="#{bundle.EditTwpContactRequiredMessage_twpSocioTsocId}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{twpSocioController.itemsAvailableSelectOne}"
+                                           var="twpSocioTsocIdItem"
+                                           itemValue="#{twpSocioTsocIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{twpContactController.update}" value="#{bundle.Save}" update="display,:TwpContactListForm:datalist,:growl" oncomplete="handleSubmit(args, 'TwpContactEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TwpContactEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

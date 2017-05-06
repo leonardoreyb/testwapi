@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListTwpProyTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="TwpProyListForm">
+                <p:panel header="#{bundle.ListTwpProyTitle}">
+                    <p:dataTable id="datalist" value="#{twpProyController.items}" var="item"
+                                 selectionMode="single" selection="#{twpProyController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.tproyId}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTwpProyTitle_tproyId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tproyId}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTwpProyTitle_tproyCod}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tproyCod}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTwpProyTitle_tproyNom}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tproyNom}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTwpProyTitle_tproySociedad}"/>
+                            </f:facet>
+                            <p:selectBooleanCheckbox value="#{item.tproySociedad}" disabled="true"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTwpProyTitle_tproyA}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tproyA}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTwpProyTitle_tproyI}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tproyI}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTwpProyTitle_tproyU}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tproyU}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTwpProyTitle_tproyEsta}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.tproyEsta}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTwpProyTitle_twpAnticipoTcipoId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.twpAnticipoTcipoId}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTwpProyTitle_twpCentrocostTcentcId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.twpCentrocostTcentcId}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTwpProyTitle_twpCiudadTciudId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.twpCiudadTciudId}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTwpProyTitle_twpIvaTivaId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.twpIvaTivaId}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListTwpProyTitle_twpSociedadTsocId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.twpSociedadTsocId}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{twpProyController.prepareCreate}" update=":TwpProyCreateForm" oncomplete="PF('TwpProyCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":TwpProyViewForm" oncomplete="PF('TwpProyViewDialog').show()" disabled="#{empty twpProyController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":TwpProyEditForm" oncomplete="PF('TwpProyEditDialog').show()" disabled="#{empty twpProyController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{twpProyController.destroy}" update=":growl,datalist" disabled="#{empty twpProyController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

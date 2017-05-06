@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TwpProyCreateDlg" widgetVar="TwpProyCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateTwpProyTitle}">
+            <h:form id="TwpProyCreateForm" >
+                <h:panelGroup id="display">
+
+                
+                <p:wizard flowListener="#{twpProyController.onFlowProcess}" >
+                <p:tab id="personal" title="Proyecto">
+            <p:panel header="Datos del proyecto">
+                <p:messages />
+                <h:panelGrid columns="2" columnClasses="label, value">
+                    <h:outputText value="Codigo Proyecto *" />
+                    <p:inputText value="#{twpProyController.selected.tproyCod}" required="true" label="Codigo Proyecto"/>
+ 
+                    <h:outputText value="Nombre Proyecto *" />
+                    <p:inputText value="#{twpProyController.selected.tproyNom}" required="true" label="Nombre Proyecto"/>
+ 
+                </h:panelGrid>
+                
+            </p:panel>
+                </p:tab>
+                    <p:tab id="costos" title="Costos">
+            <p:panel header="Datos del proyecto">
+                <p:messages />
+                <h:panelGrid columns="2" columnClasses="label, value">
+                    <h:outputText value="Codigo Proyecto *" />
+                    <p:inputText value="#{twpCentrocostController.selected.tcentcCod}" required="true" label="Centro de costos"/>
+  
+                </h:panelGrid>
+                
+            </p:panel>
+                    
+        </p:tab>
+        <p:tab id="anticipo" title="Anticipo">
+            <p:panel header="Datos del proyecto">
+                <p:messages />
+                <h:panelGrid columns="2" columnClasses="label, value">
+                    <h:outputText value="Incluye A *" />
+                    <p:inputText value="#{twpAnticipoController.selected.tcipoA}" required="true" label="Incluye A"/>
+ 
+                    <h:outputText value="Incluye I*" />
+                    <p:inputText value="#{twpAnticipoController.selected.tcipoI}" required="true" label="Incluye I"/>
+ 
+                </h:panelGrid>
+                <p:commandButton value="Guardar" actionListener="#{twpProyController.create}" update="growl" process="@this"/>
+            </p:panel>
+        </p:tab>
+    </p:wizard>
+                    </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

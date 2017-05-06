@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TwpCiudadCreateDlg" widgetVar="TwpCiudadCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateTwpCiudadTitle}">
+            <h:form id="TwpCiudadCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{twpCiudadController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateTwpCiudadLabel_tciudId}" for="tciudId" />
+                        <p:inputText id="tciudId" value="#{twpCiudadController.selected.tciudId}" title="#{bundle.CreateTwpCiudadTitle_tciudId}" required="true" requiredMessage="#{bundle.CreateTwpCiudadRequiredMessage_tciudId}"/>
+                        <p:outputLabel value="#{bundle.CreateTwpCiudadLabel_tciudCod}" for="tciudCod" />
+                        <p:inputText id="tciudCod" value="#{twpCiudadController.selected.tciudCod}" title="#{bundle.CreateTwpCiudadTitle_tciudCod}" />
+                        <p:outputLabel value="#{bundle.CreateTwpCiudadLabel_tciudNombre}" for="tciudNombre" />
+                        <p:inputText id="tciudNombre" value="#{twpCiudadController.selected.tciudNombre}" title="#{bundle.CreateTwpCiudadTitle_tciudNombre}" />
+                        <p:outputLabel value="#{bundle.CreateTwpCiudadLabel_tdeptoId}" for="tdeptoId" />
+                        <p:inputText id="tdeptoId" value="#{twpCiudadController.selected.tdeptoId}" title="#{bundle.CreateTwpCiudadTitle_tdeptoId}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{twpCiudadController.create}" value="#{bundle.Save}" update="display,:TwpCiudadListForm:datalist,:growl" oncomplete="handleSubmit(args,'TwpCiudadCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TwpCiudadCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

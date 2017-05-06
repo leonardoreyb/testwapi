@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TwpFacturaViewDlg" widgetVar="TwpFacturaViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewTwpFacturaTitle}">
+            <h:form id="TwpFacturaViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{twpFacturaController.selected != null}">
+                        <h:outputText value="#{bundle.ViewTwpFacturaLabel_tfactId}"/>
+                        <h:outputText value="#{twpFacturaController.selected.tfactId}" title="#{bundle.ViewTwpFacturaTitle_tfactId}"/>
+                        <h:outputText value="#{bundle.ViewTwpFacturaLabel_tfactCod}"/>
+                        <h:outputText value="#{twpFacturaController.selected.tfactCod}" title="#{bundle.ViewTwpFacturaTitle_tfactCod}"/>
+                        <h:outputText value="#{bundle.ViewTwpFacturaLabel_tfactFech}"/>
+                        <h:outputText value="#{twpFacturaController.selected.tfactFech}" title="#{bundle.ViewTwpFacturaTitle_tfactFech}"/>
+                        <h:outputText value="#{bundle.ViewTwpFacturaLabel_tfactSubt}"/>
+                        <h:outputText value="#{twpFacturaController.selected.tfactSubt}" title="#{bundle.ViewTwpFacturaTitle_tfactSubt}"/>
+                        <h:outputText value="#{bundle.ViewTwpFacturaLabel_tfactTot}"/>
+                        <h:outputText value="#{twpFacturaController.selected.tfactTot}" title="#{bundle.ViewTwpFacturaTitle_tfactTot}"/>
+                        <h:outputText value="#{bundle.ViewTwpFacturaLabel_twpClienteTclieId}"/>
+                        <h:outputText value="#{twpFacturaController.selected.twpClienteTclieId}" title="#{bundle.ViewTwpFacturaTitle_twpClienteTclieId}"/>
+                        <h:outputText value="#{bundle.ViewTwpFacturaLabel_twpProyTproyId}"/>
+                        <h:outputText value="#{twpFacturaController.selected.twpProyTproyId}" title="#{bundle.ViewTwpFacturaTitle_twpProyTproyId}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="TwpFacturaViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

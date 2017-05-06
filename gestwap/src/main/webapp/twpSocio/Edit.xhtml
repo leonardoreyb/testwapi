@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TwpSocioEditDlg" widgetVar="TwpSocioEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditTwpSocioTitle}">
+            <h:form id="TwpSocioEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{twpSocioController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditTwpSocioLabel_tsociId}" for="tsociId" />
+                        <p:inputText id="tsociId" value="#{twpSocioController.selected.tsociId}" title="#{bundle.EditTwpSocioTitle_tsociId}" required="true" requiredMessage="#{bundle.EditTwpSocioRequiredMessage_tsociId}"/>
+                        <p:outputLabel value="#{bundle.EditTwpSocioLabel_tsociIdentifi}" for="tsociIdentifi" />
+                        <p:inputText id="tsociIdentifi" value="#{twpSocioController.selected.tsociIdentifi}" title="#{bundle.EditTwpSocioTitle_tsociIdentifi}" />
+                        <p:outputLabel value="#{bundle.EditTwpSocioLabel_tsociNombre}" for="tsociNombre" />
+                        <p:inputText id="tsociNombre" value="#{twpSocioController.selected.tsociNombre}" title="#{bundle.EditTwpSocioTitle_tsociNombre}" />
+                        <p:outputLabel value="#{bundle.EditTwpSocioLabel_tsociTelefono}" for="tsociTelefono" />
+                        <p:inputText id="tsociTelefono" value="#{twpSocioController.selected.tsociTelefono}" title="#{bundle.EditTwpSocioTitle_tsociTelefono}" />
+                        <p:outputLabel value="#{bundle.EditTwpSocioLabel_tsociDirec}" for="tsociDirec" />
+                        <p:inputText id="tsociDirec" value="#{twpSocioController.selected.tsociDirec}" title="#{bundle.EditTwpSocioTitle_tsociDirec}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{twpSocioController.update}" value="#{bundle.Save}" update="display,:TwpSocioListForm:datalist,:growl" oncomplete="handleSubmit(args, 'TwpSocioEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TwpSocioEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

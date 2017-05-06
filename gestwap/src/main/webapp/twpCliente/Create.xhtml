@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TwpClienteCreateDlg" widgetVar="TwpClienteCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateTwpClienteTitle}">
+            <h:form id="TwpClienteCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{twpClienteController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateTwpClienteLabel_tclieId}" for="tclieId" />
+                        <p:inputText id="tclieId" value="#{twpClienteController.selected.tclieId}" title="#{bundle.CreateTwpClienteTitle_tclieId}" required="true" requiredMessage="#{bundle.CreateTwpClienteRequiredMessage_tclieId}"/>
+                        <p:outputLabel value="#{bundle.CreateTwpClienteLabel_tclieCod}" for="tclieCod" />
+                        <p:inputText id="tclieCod" value="#{twpClienteController.selected.tclieCod}" title="#{bundle.CreateTwpClienteTitle_tclieCod}" />
+                        <p:outputLabel value="#{bundle.CreateTwpClienteLabel_tclieNombre}" for="tclieNombre" />
+                        <p:inputText id="tclieNombre" value="#{twpClienteController.selected.tclieNombre}" title="#{bundle.CreateTwpClienteTitle_tclieNombre}" />
+                        <p:outputLabel value="#{bundle.CreateTwpClienteLabel_tclieTelefono}" for="tclieTelefono" />
+                        <p:inputText id="tclieTelefono" value="#{twpClienteController.selected.tclieTelefono}" title="#{bundle.CreateTwpClienteTitle_tclieTelefono}" />
+                        <p:outputLabel value="#{bundle.CreateTwpClienteLabel_tclieDirec}" for="tclieDirec" />
+                        <p:inputText id="tclieDirec" value="#{twpClienteController.selected.tclieDirec}" title="#{bundle.CreateTwpClienteTitle_tclieDirec}" />
+                        <p:outputLabel value="#{bundle.CreateTwpClienteLabel_tcliTppersona}" for="tcliTppersona" />
+                        <p:inputText id="tcliTppersona" value="#{twpClienteController.selected.tcliTppersona}" title="#{bundle.CreateTwpClienteTitle_tcliTppersona}" />
+                        <p:outputLabel value="#{bundle.CreateTwpClienteLabel_twpContactTcontId}" for="twpContactTcontId" />
+                        <p:selectOneMenu id="twpContactTcontId" value="#{twpClienteController.selected.twpContactTcontId}" required="true" requiredMessage="#{bundle.EditTwpClienteRequiredMessage_twpContactTcontId}">
+                            <f:selectItems value="#{twpContactController.itemsAvailableSelectOne}"
+                                           var="twpContactTcontIdItem"
+                                           itemValue="#{twpContactTcontIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{twpClienteController.create}" value="#{bundle.Save}" update="display,:TwpClienteListForm:datalist,:growl" oncomplete="handleSubmit(args,'TwpClienteCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TwpClienteCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

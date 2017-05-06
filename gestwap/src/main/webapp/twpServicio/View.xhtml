@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TwpServicioViewDlg" widgetVar="TwpServicioViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewTwpServicioTitle}">
+            <h:form id="TwpServicioViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{twpServicioController.selected != null}">
+                        <h:outputText value="#{bundle.ViewTwpServicioLabel_tservId}"/>
+                        <h:outputText value="#{twpServicioController.selected.tservId}" title="#{bundle.ViewTwpServicioTitle_tservId}"/>
+                        <h:outputText value="#{bundle.ViewTwpServicioLabel_tservCod}"/>
+                        <h:outputText value="#{twpServicioController.selected.tservCod}" title="#{bundle.ViewTwpServicioTitle_tservCod}"/>
+                        <h:outputText value="#{bundle.ViewTwpServicioLabel_tservDetalle}"/>
+                        <h:outputText value="#{twpServicioController.selected.tservDetalle}" title="#{bundle.ViewTwpServicioTitle_tservDetalle}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="TwpServicioViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

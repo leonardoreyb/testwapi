@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="TwpCuentaEditDlg" widgetVar="TwpCuentaEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditTwpCuentaTitle}">
+            <h:form id="TwpCuentaEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{twpCuentaController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditTwpCuentaLabel_tcuenId}" for="tcuenId" />
+                        <p:inputText id="tcuenId" value="#{twpCuentaController.selected.tcuenId}" title="#{bundle.EditTwpCuentaTitle_tcuenId}" required="true" requiredMessage="#{bundle.EditTwpCuentaRequiredMessage_tcuenId}"/>
+                        <p:outputLabel value="#{bundle.EditTwpCuentaLabel_tcuenNo}" for="tcuenNo" />
+                        <p:inputText id="tcuenNo" value="#{twpCuentaController.selected.tcuenNo}" title="#{bundle.EditTwpCuentaTitle_tcuenNo}" />
+                        <p:outputLabel value="#{bundle.EditTwpCuentaLabel_tcuenBco}" for="tcuenBco" />
+                        <p:inputText id="tcuenBco" value="#{twpCuentaController.selected.tcuenBco}" title="#{bundle.EditTwpCuentaTitle_tcuenBco}" />
+                        <p:outputLabel value="#{bundle.EditTwpCuentaLabel_tcuenTipo}" for="tcuenTipo" />
+                        <p:inputText id="tcuenTipo" value="#{twpCuentaController.selected.tcuenTipo}" title="#{bundle.EditTwpCuentaTitle_tcuenTipo}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{twpCuentaController.update}" value="#{bundle.Save}" update="display,:TwpCuentaListForm:datalist,:growl" oncomplete="handleSubmit(args, 'TwpCuentaEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="TwpCuentaEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>
