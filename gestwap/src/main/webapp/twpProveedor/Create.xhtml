@@ -64,7 +64,13 @@
                                                 var="category" itemLabel="#{category.tcatDet}" itemValue="#{category}" forceSelection="true" />
                             </p:column>
                             <p:column>
-                                <p:commandButton id="basic" value="Agregar categoria" onclick="dlg.show();" type="button" />  
+                                <p:commandButton 
+                                    value="Agregar categoría"
+                                    actionListener="#{twpCategController.prepareCreate}" 
+                            process="@this"
+                            oncomplete="PF('TwpCategCreateDialog').show()"
+                            update=":TwpCategCreateForm"
+                                    />  
                             </p:column>
                         </p:row>
                         <p:row>
@@ -76,7 +82,12 @@
                                                 var="city" itemLabel="#{city.tciudNombre}" itemValue="#{city}" forceSelection="true" />
                             </p:column>
                             <p:column>
-                                <p:commandButton id="addcity" value="Agregar Ciudad" onclick="dlg1.show();" type="button" />  
+                                <p:commandButton
+                                    value="Agregar ciudad"
+                                    actionListener="#{twpCiudadController.prepareCreate}" 
+                            process="@this"
+                            oncomplete="PF('TwpCiudadCreateDialog').show()"
+                            update=":TwpCiudadCreateForm"/>  
                             </p:column>
                         </p:row>
                         <p:row>
@@ -114,6 +125,8 @@
                 </h:panelGroup>
             </h:form>
                     <ui:include src="CreateContact.xhtml"/>
+                    <ui:include src="CreateCateg.xhtml"/>
+                    <ui:include src="CreateCiud.xhtml"/>
           </p:dialog>
 
         
